@@ -59,6 +59,9 @@ public class ABProblem
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		String testStr = "BAABBABAAB";
+		if(args != null && args.length > 0) {	
+			testStr = args[0];
+		}
 		System.out.println("The value of K in the String " + testStr + " is " + testString(testStr));
 	}
 	
