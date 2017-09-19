@@ -3,14 +3,13 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class ABProblem
+class ABHandler
 {
 	String finalString = "";
-	static boolean validStringVerified = false;
-	
-	public static int testString(String testStr) 
-	{
-		
+	boolean validStringVerified = false;
+
+	public int getNumberOfABPairs(String testStr)
+	{	
 		int mergedCount = 0;
 		
 		//Return -1 for invalid String
@@ -40,7 +39,7 @@ public class ABProblem
 		
 		if(testStr.charAt(0) == 'B')
 		{
-			return testString(testStr.substring(1));
+			return getNumberOfABPairs(testStr.substring(1));
 		}
 		else
 		{
@@ -52,18 +51,23 @@ public class ABProblem
 				}	
 			}
 			
-			return mergedCount + testString(testStr.substring(1));
+			return mergedCount + getNumberOfABPairs(testStr.substring(1));
 		}
 	}
-	
+}
+
+public class ABProblem
+{
 	public static void main (String[] args) throws java.lang.Exception
 	{
+
 		String testStr = "BAABBABAAB";
 		if(args != null && args.length > 0) {	
 			testStr = args[0];
 		}
-		System.out.println("The value of K in the String " + testStr + " is " + testString(testStr));
+				
+		ABHandler abObj = new ABHandler();
+		System.out.println("The value of K in the String " + testStr + " is " + abObj.getNumberOfABPairs(testStr));
 	}
-	
 	
 }
