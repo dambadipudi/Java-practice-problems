@@ -10,49 +10,38 @@ class ABHandler
 
 	public int getNumberOfABPairs(String testStr)
 	{	
-		int mergedCount = 0;
+		int KCount = 0;
+		int aCount = 0;
 		
-		//Return -1 for invalid String
-		if(!validStringVerified) {	
-			for(int i=0; i < testStr.length(); i++) 
-			{
-				if(testStr.charAt(i) != 'A' && testStr.charAt(i) != 'B') 
+		/* Code with nested for loops
+		for(int i=0; i < testStr.length() - 1 ; i++)
+		{
+			if(testStr.charAt(i) == 'A') 
+			{	
+				for(int j= i+1; j < testStr.length(); j++)
 				{
-					return -1;
+					if(testStr.charAt(j) == 'B')
+					{
+						KCount ++;
+					}
 				}
 			}
-			validStringVerified = true;
+		}*/
+
+		// Following code uses only 1 for loop
+		for(int i = 0; i < testStr.length(); i++) 
+		{
+			if(testStr.charAt(i) == 'A')
+			{
+				aCount ++; // One more A in the string					   	
+			}
+			else if(testStr.charAt(i) == 'B')
+			{
+				KCount += aCount;   // KCount will increase by the number of previous As in the string
+			}	
 		}
 		
-		//Base case
-		if(testStr.length() == 2) 
-		{
-			if(testStr.equals("AB"))
-			{
-				return 1;
-			}
-			else 
-			{
-				return 0;
-			}
-		}
-		
-		if(testStr.charAt(0) == 'B')
-		{
-			return getNumberOfABPairs(testStr.substring(1));
-		}
-		else
-		{
-			for(int i = 1; i < testStr.length(); i++) 
-			{
-				if(testStr.charAt(i) == 'B') 
-				{
-					mergedCount ++;
-				}	
-			}
-			
-			return mergedCount + getNumberOfABPairs(testStr.substring(1));
-		}
+		return KCount;
 	}
 }
 
