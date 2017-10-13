@@ -6,5 +6,10 @@ public class UnicodeValueAsString {
     String hexStringWithExtraZeroes = "0000" + Integer.toHexString(uniChar).toUpperCase();
     String unicodeString = "\\u" + hexStringWithExtraZeroes.substring(hexStringWithExtraZeroes.length()-4);
     System.out.println("the char is :"+uniChar + " And the string is :"+unicodeString); 
+    
+    // String containing unicode info converted to char
+    String param = "\u0178";
+    int hexInt = Integer.parseInt(param.substring(2), 16);
+    char [] unicodeChars = Character.toChars(hexInt);
   }
 }
