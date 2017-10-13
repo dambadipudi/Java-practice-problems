@@ -1,0 +1,10 @@
+public class UnicodeValueAsString {
+  public static void main(String [] args) {
+    char uniChar = '\u0178';
+    String tempString = "" + uniChar;
+    System.out.println("temp string " + tempString);
+    String hexStringWithExtraZeroes = "0000" + Integer.toHexString(uniChar).toUpperCase();
+    String unicodeString = "\\u" + hexStringWithExtraZeroes.substring(hexStringWithExtraZeroes.length()-4);
+    System.out.println("the char is :"+uniChar + " And the string is :"+unicodeString); 
+  }
+}
